@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:goaviralnews/dashboard.dart';
+import 'package:goaviralnews/features/dashboard/screens/dashboard.dart';
 import 'package:goaviralnews/photo_gallery.dart';
 import 'package:goaviralnews/trip_section.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class Routes extends StatefulWidget {
   const Routes({super.key});
+
+  static const String routName = "/routes";
 
   @override
   State<Routes> createState() => _RoutesState();
@@ -14,7 +16,7 @@ class Routes extends StatefulWidget {
 class _RoutesState extends State<Routes> {
   var _currentIndex = 0;
   final List<Widget> _pages = [
-    DashboardScreen(),
+    DashboardPage(),
     PhotoGalleryScreen(),
     PhotoGalleryScreen(),
     TripSectionScreen(),

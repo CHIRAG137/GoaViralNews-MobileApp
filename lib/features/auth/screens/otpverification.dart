@@ -83,7 +83,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                     SizedBox(height: height / 12),
                     const CustomElevatedButton(
                       title: "Verify OTP",
-                      router: "/onboarding-page",
+                      router: "/create-profile-page",
                     ),
                   ],
                 ),

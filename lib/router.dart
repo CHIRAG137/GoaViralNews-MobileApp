@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:goaviralnews/features/auth/screens/login.dart';
 import 'package:goaviralnews/features/auth/screens/otpverification.dart';
+import 'package:goaviralnews/features/auth/screens/profile.dart';
 import 'package:goaviralnews/features/auth/screens/register.dart';
+import 'package:goaviralnews/features/dashboard/screens/dashboard.dart';
 import 'package:goaviralnews/features/onboarding/screens/onboarding.dart';
+import 'package:goaviralnews/routes.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -11,12 +14,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const OnboardingPage(),
       );
-      case LoginPage.routName:
+    case LoginPage.routName:
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const LoginPage(),
       );
-      case RegisterPage.routName:
+    case RegisterPage.routName:
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const RegisterPage(),
@@ -25,6 +28,21 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const OtpVerificationPage(),
+      );
+    case CreateProfilePage.routName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const CreateProfilePage(),
+      );
+    case DashboardPage.routName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const DashboardPage(),
+      );
+    case Routes.routName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const Routes(),
       );
     default:
       return MaterialPageRoute(

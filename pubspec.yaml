@@ -43,6 +43,7 @@ dependencies:
   firebase_phone_auth_handler: ^1.0.8
   intl: 
   salomon_bottom_bar:
+  dotted_border:
 
 dev_dependencies:
   flutter_test:
