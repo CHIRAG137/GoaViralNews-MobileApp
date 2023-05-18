@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goaviralnews/features/dashboard/widgets/custom_avatar.dart';
-import 'package:goaviralnews/features/dashboard/widgets/custom_card.dart';
+import 'package:goaviralnews/features/navigation/widgets/custom_avatar.dart';
+import 'package:goaviralnews/features/navigation/widgets/custom_card.dart';
 import 'package:goaviralnews/globalVariables.dart';
 import '../../../size_config.dart';
 
@@ -211,20 +211,20 @@ class _DashboardPageState extends State<DashboardPage> {
                           borderRadius: BorderRadius.circular(12.0),
                           color: Colors.blue,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.filter_alt,
                           color: GlobalVariables.backgroundColor,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
-                  Divider(
+                  const Divider(
                     color: GlobalVariables.backgroundColor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   Row(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goaviralnews/features/dashboard/screens/dashboard.dart';
+import 'package:goaviralnews/features/navigation/screens/dashboard.dart';
+import 'package:goaviralnews/features/navigation/screens/search.dart';
 import 'package:goaviralnews/photo_gallery.dart';
 import 'package:goaviralnews/trip_section.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -17,8 +18,16 @@ class _RoutesState extends State<Routes> {
   var _currentIndex = 0;
   final List<Widget> _pages = [
     DashboardPage(),
-    PhotoGalleryScreen(),
-    PhotoGalleryScreen(),
+    SearchPage(),
+    PhotoGalleryScreen(
+      imagePaths: [
+        'assets/images/im_gallery1.png',
+        'assets/images/im_gallery1.png',
+        'assets/images/im_gallery1.png',
+        // Add more image paths here
+      ],
+      centralImageScale: 2.0,
+    ),
     TripSectionScreen(),
   ];
 

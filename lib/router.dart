@@ -3,7 +3,7 @@ import 'package:goaviralnews/features/auth/screens/login.dart';
 import 'package:goaviralnews/features/auth/screens/otpverification.dart';
 import 'package:goaviralnews/features/auth/screens/profile.dart';
 import 'package:goaviralnews/features/auth/screens/register.dart';
-import 'package:goaviralnews/features/dashboard/screens/dashboard.dart';
+import 'package:goaviralnews/features/navigation/screens/dashboard.dart';
 import 'package:goaviralnews/features/onboarding/screens/onboarding.dart';
 import 'package:goaviralnews/routes.dart';
 
