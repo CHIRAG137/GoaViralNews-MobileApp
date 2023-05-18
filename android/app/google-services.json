@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "970011981430",
+    "project_id": "goaviralnews-66678",
+    "storage_bucket": "goaviralnews-66678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970011981430:android:e121acc2d273840b801157",
+        "android_client_info": {
+          "package_name": "com.example.goaviralnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970011981430-d0f1puu5gsnjmjincsnrjcd5j21q6fhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4r9xUIqtMQ8evJX0nkA-HQytBru1THUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970011981430-d0f1puu5gsnjmjincsnrjcd5j21q6fhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970011981430:android:b5a1358e5abd0330801157",
+        "android_client_info": {
+          "package_name": "com.example.goaviralnewz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970011981430-d0f1puu5gsnjmjincsnrjcd5j21q6fhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4r9xUIqtMQ8evJX0nkA-HQytBru1THUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970011981430-d0f1puu5gsnjmjincsnrjcd5j21q6fhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
