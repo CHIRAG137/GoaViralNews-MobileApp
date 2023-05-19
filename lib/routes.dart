@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goaviralnews/features/navigation/screens/dashboard.dart';
 import 'package:goaviralnews/features/navigation/screens/search.dart';
-import 'package:goaviralnews/photo_gallery.dart';
-import 'package:goaviralnews/trip_section.dart';
+import 'package:goaviralnews/features/navigation/screens/photo_gallery.dart';
+import 'package:goaviralnews/features/navigation/screens/tripzie.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class Routes extends StatefulWidget {
@@ -19,16 +19,8 @@ class _RoutesState extends State<Routes> {
   final List<Widget> _pages = [
     DashboardPage(),
     SearchPage(),
-    PhotoGalleryScreen(
-      imagePaths: [
-        'assets/images/im_gallery1.png',
-        'assets/images/im_gallery1.png',
-        'assets/images/im_gallery1.png',
-        // Add more image paths here
-      ],
-      centralImageScale: 2.0,
-    ),
-    TripSectionScreen(),
+    PhotoGalleryScreen(),
+    TripSectionPage(),
   ];
 
   @override

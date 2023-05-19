@@ -4,12 +4,12 @@ import '../../../globalVariables.dart';
 class CustomScrollButton extends StatelessWidget {
   const CustomScrollButton({
     super.key,
-    required this.iconData,
+    this.iconData,
     required this.title,
     required this.color,
   });
 
-  final IconData iconData;
+  final IconData? iconData;
   final String title;
   final Color color;
 

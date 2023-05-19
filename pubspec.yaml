@@ -44,6 +44,7 @@ dependencies:
   intl: 
   salomon_bottom_bar:
   dotted_border:
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:
