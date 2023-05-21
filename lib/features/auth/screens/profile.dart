@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goaviralnews/common/widgets/custom_elevatedbutton.dart';
 import 'package:goaviralnews/features/onboarding/screens/onboarding.dart';
 import 'package:goaviralnews/globalVariables.dart';
+import 'package:intl/intl.dart';
 import '../../../size_config.dart';
 
 class CreateProfilePage extends StatefulWidget {
@@ -14,6 +15,7 @@ class CreateProfilePage extends StatefulWidget {
 }
 
 class _CreateProfilePageState extends State<CreateProfilePage> {
+  DateTime? _selectedDate;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -165,17 +167,51 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
               const SizedBox(
                 height: 32,
               ),
-              TextFormField(
+              DropdownButtonFormField<String>(
                 decoration: const InputDecoration(
                   hintText: "Select gender",
                 ),
+                items: <String>['Male', 'Female', 'Other']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  // Do something with the selected value
+                },
+                value: null,
               ),
               const SizedBox(
                 height: 32,
               ),
               TextFormField(
-                decoration: const InputDecoration(
+                readOnly: true,
+                decoration: InputDecoration(
                   hintText: "What is your date of birth?",
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      showDatePicker(
+                        context: context,
+                        initialDate: _selectedDate ?? DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      ).then((selectedDate) {
+                        if (selectedDate != null) {
+                          setState(() {
+                            _selectedDate = selectedDate;
+                          });
+                        }
+                      });
+                    },
+                    icon: Icon(Icons.calendar_today),
+                  ),
+                ),
+                controller: TextEditingController(
+                  text: _selectedDate != null
+                      ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
+                      : '',
                 ),
               ),
               SizedBox(

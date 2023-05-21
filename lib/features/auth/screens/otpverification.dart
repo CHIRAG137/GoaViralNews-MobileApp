@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goaviralnews/common/widgets/custom_appbar.dart';
 import 'package:goaviralnews/common/widgets/custom_elevatedbutton.dart';
 import 'package:goaviralnews/globalVariables.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import '../../../size_config.dart';
 
 class OtpVerificationPage extends StatefulWidget {
@@ -34,14 +35,14 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 child: Column(
                   children: [
                     const CustomAppbar(
-                        router: "/onboarding-page", title: "OTP Verification"),
+                        router: "/onboarding-page", title: "Login"),
                     const SizedBox(
                       height: 24,
                     ),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        "Enter the Verification Code we just sent on your given number.",
+                        "Please sign in to continue...",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -49,11 +50,44 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                       ),
                     ),
                     SizedBox(
-                      height: height / 12,
+                      height: 48,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: IntlPhoneField(
+                        decoration: const InputDecoration(
+                          hintText: 'Mobile Number',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: GlobalVariables.fadedTextColor,
+                              width: 0.5,
+                            ),
+                          ),
+                        ),
+                        initialCountryCode: 'IN',
+                        onChanged: (phone) {
+                          print(phone.completeNumber);
+                          print(phone.countryCode);
+                          print(phone.number);
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    Text(
+                      "Enter the Verification Code we just sent on your given number.",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: List.generate(6, (index) {
+                      children: List.generate(4, (index) {
                         return SizedBox(
                           width: 50,
                           child: TextField(
@@ -68,7 +102,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             maxLength: 1,
                             onChanged: (value) {
                               if (value.isNotEmpty) {
-                                if (index < 5) {
+                                if (index < 3) {
                                   FocusScope.of(context).nextFocus();
                                 } else {
                                   // Hide keyboard on last digit
@@ -80,69 +114,69 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         );
                       }),
                     ),
-                    SizedBox(height: height / 12),
-                    const CustomElevatedButton(
-                      title: "Verify OTP",
-                      router: "/create-profile-page",
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Didn't Received Code ?",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: GlobalVariables.extraFadedTextColor,
-                            fontWeight: FontWeight.w400,
+                    SizedBox(height: 32),
+                    Container(
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Didn't Received Code ?",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: GlobalVariables.extraFadedTextColor,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      GlobalVariables.secondaryButtonColor,
+                                  elevation: 0,
+                                  textStyle: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 4),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                                child: const Text(
+                                  "Click here to resend",
+                                  style: TextStyle(
+                                    color: GlobalVariables.fadedTextColor,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                GlobalVariables.secondaryButtonColor,
-                            elevation: 0,
-                            textStyle: const TextStyle(
-                              fontSize: 12,
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          const Text(
+                            "You will receive an SMS verification that may apply message and data rates.",
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: GlobalVariables.extraFadedTextColor,
                               fontWeight: FontWeight.w400,
                             ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 4),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            ),
                           ),
-                          child: const Text(
-                            "Click here to resend",
-                            style: TextStyle(
-                              color: GlobalVariables.fadedTextColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    const Text(
-                      "You will receive an SMS verification that may apply message and data rates.",
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: GlobalVariables.extraFadedTextColor,
-                        fontWeight: FontWeight.w400,
+                        ],
                       ),
                     ),
                   ],
                 ),
+              ),
+              const CustomElevatedButton(
+                title: "Verify OTP",
+                router: "/create-profile-page",
               ),
             ],
           ),
