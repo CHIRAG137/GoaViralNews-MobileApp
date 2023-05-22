@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goaviralnews/features/auth/screens/avatar.dart';
 import 'package:goaviralnews/features/auth/screens/login.dart';
 import 'package:goaviralnews/features/auth/screens/otpverification.dart';
 import 'package:goaviralnews/features/auth/screens/profile.dart';
@@ -43,6 +44,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const Routes(),
+      );
+      case AvatarPage.routName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const AvatarPage(),
       );
     default:
       return MaterialPageRoute(

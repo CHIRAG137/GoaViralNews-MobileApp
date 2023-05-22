@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goaviralnews/common/widgets/custom_elevatedbutton.dart';
+import 'package:goaviralnews/features/auth/screens/avatar.dart';
 import 'package:goaviralnews/features/onboarding/screens/onboarding.dart';
 import 'package:goaviralnews/globalVariables.dart';
 import 'package:intl/intl.dart';
@@ -76,16 +77,21 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
                   Positioned(
                     right: 0,
                     bottom: 6,
-                    child: Container(
-                      padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        color: GlobalVariables.extraFadedTextColor,
-                      ),
-                      child: const Icon(
-                        Icons.edit,
-                        color: GlobalVariables.backgroundColor,
-                        size: 12,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/avatar-page');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24),
+                          color: GlobalVariables.extraFadedTextColor,
+                        ),
+                        child: const Icon(
+                          Icons.edit,
+                          color: GlobalVariables.backgroundColor,
+                          size: 12,
+                        ),
                       ),
                     ),
                   ),

@@ -28,12 +28,13 @@ class CustomAvatar extends StatelessWidget {
               borderType: BorderType.RRect,
               radius: Radius.circular(20),
               dashPattern: [width, gap],
-              color: Colors.blue.shade700,
+              color: Colors.greenAccent.shade700,
               strokeWidth: 2,
               child: Container(
                 padding: EdgeInsets.all(2),
                 child: Image.asset(
                   imageData,
+                  height: 48,
                 ),
               ),
             ),
@@ -44,7 +45,7 @@ class CustomAvatar extends StatelessWidget {
                 padding: EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
-                  color: Colors.blue.shade300,
+                  color: Colors.greenAccent.shade700,
                   border: Border.all(
                     color: GlobalVariables.backgroundColor,
                     width: 2,
@@ -64,8 +65,8 @@ class CustomAvatar extends StatelessWidget {
         ),
         Text(
           name,
-          style: const TextStyle(
-            color: GlobalVariables.primaryButtonColor,
+          style: TextStyle(
+            color: Colors.greenAccent.shade700,
             fontWeight: FontWeight.w500,
           ),
         ),

@@ -57,6 +57,9 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
                       child: IntlPhoneField(
+                        flagsButtonMargin: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                        ),
                         decoration: const InputDecoration(
                           hintText: 'Mobile Number',
                           border: OutlineInputBorder(
@@ -72,17 +75,6 @@ class _LoginPageState extends State<LoginPage> {
                           print(phone.countryCode);
                           print(phone.number);
                         },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      "You will receive an SMS verification that may apply message and data rates.",
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: GlobalVariables.extraFadedTextColor,
-                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ],

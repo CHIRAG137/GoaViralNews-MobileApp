@@ -120,13 +120,6 @@ class _DashboardPageState extends State<DashboardPage> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 8,
-                ),
-                const Icon(
-                  Icons.notifications_none_rounded,
-                  size: 28,
-                ),
               ],
             ),
             const SizedBox(
@@ -134,42 +127,42 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Wrap(
                 spacing: 24,
                 children: const [
                   CustomAvatar(
                     name: "Chirag",
                     iconData: Icons.videocam,
-                    imageData: "assets/icons/ic_profilepic.png",
+                    imageData: "assets/icons/Group 43.png",
                     width: 10,
                     gap: 0,
                   ),
                   CustomAvatar(
                     name: "Chirag",
                     iconData: Icons.videocam,
-                    imageData: "assets/icons/ic_profilepic.png",
+                    imageData: "assets/icons/Group 43.png",
                     width: 10,
                     gap: 0,
                   ),
                   CustomAvatar(
                     name: "Chirag",
                     iconData: Icons.videocam,
-                    imageData: "assets/icons/ic_profilepic.png",
+                    imageData: "assets/icons/Group 43.png",
                     width: 10,
                     gap: 5,
                   ),
                   CustomAvatar(
                     name: "Chirag",
                     iconData: Icons.videocam,
-                    imageData: "assets/icons/ic_profilepic.png",
+                    imageData: "assets/icons/Group 43.png",
                     width: 10,
                     gap: 0,
                   ),
                   CustomAvatar(
                     name: "Chirag",
                     iconData: Icons.videocam,
-                    imageData: "assets/icons/ic_profilepic.png",
+                    imageData: "assets/icons/Group 43.png",
                     width: 10,
                     gap: 0,
                   ),
@@ -178,10 +171,19 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             const SizedBox(height: 24),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: GlobalVariables.primaryButtonColor,
+                color: GlobalVariables.backgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade400.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 8,
+                    offset:
+                        const Offset(0, 3), // Adjust the position of the shadow
+                  ),
+                ],
               ),
               child: Column(
                 children: [
@@ -192,21 +194,18 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: const [
                           Icon(
                             Icons.search_rounded,
-                            color: GlobalVariables.backgroundColor,
                           ),
                           SizedBox(
                             width: 16,
                           ),
                           Text(
                             "Purpose of Visit",
-                            style: TextStyle(
-                              color: GlobalVariables.backgroundColor,
-                            ),
+                            style: TextStyle(),
                           ),
                         ],
                       ),
                       Container(
-                        padding: EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
                           color: Colors.blue,
@@ -222,7 +221,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     height: 4,
                   ),
                   const Divider(
-                    color: GlobalVariables.backgroundColor,
+                    thickness: 1,
                   ),
                   const SizedBox(
                     height: 4,
@@ -234,16 +233,13 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: const [
                           Icon(
                             Icons.edit_calendar_outlined,
-                            color: GlobalVariables.backgroundColor,
                           ),
                           SizedBox(
                             width: 16,
                           ),
                           Text(
                             "from",
-                            style: TextStyle(
-                              color: GlobalVariables.backgroundColor,
-                            ),
+                            style: TextStyle(),
                           ),
                         ],
                       ),
@@ -251,16 +247,13 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: const [
                           Icon(
                             Icons.edit_calendar_outlined,
-                            color: GlobalVariables.backgroundColor,
                           ),
                           SizedBox(
                             width: 16,
                           ),
                           Text(
                             "to",
-                            style: TextStyle(
-                              color: GlobalVariables.backgroundColor,
-                            ),
+                            style: TextStyle(),
                           ),
                         ],
                       ),
@@ -268,16 +261,13 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: const [
                           Icon(
                             Icons.person_add_alt_outlined,
-                            color: GlobalVariables.backgroundColor,
                           ),
                           SizedBox(
                             width: 16,
                           ),
                           Text(
                             "guest",
-                            style: TextStyle(
-                              color: GlobalVariables.backgroundColor,
-                            ),
+                            style: TextStyle(),
                           ),
                         ],
                       ),
@@ -287,55 +277,262 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
             ),
             const SizedBox(
-              height: 24,
+              height: 32,
             ),
-            GridView.count(
-              padding: EdgeInsets.all(10),
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              crossAxisCount: 3,
-              shrinkWrap: true,
-              children: const [
-                CustomCard(
-                  iconData: "assets/icons/ic_hotels_&_lodges.png",
-                  title: "Hotels & Lodges",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_restaurants.png",
-                  title: "Restaurant",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_party_clubs.png",
-                  title: "party Clubs",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_coffee_cafes.png",
-                  title: "Coffee Cafes",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_bar_&_beer.png",
-                  title: "Bar & Beer Shops",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_hire_&_vehicle.png",
-                  title: "Hire & Rent Vehicle",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_hotels_&_lodges.png",
-                  title: "Hotels & Lodges",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_hotels_&_lodges.png",
-                  title: "Hotels & Lodges",
-                ),
-                CustomCard(
-                  iconData: "assets/icons/ic_view_sunset.png",
-                  title: "View Sunset",
-                ),
-              ],
+            SingleChildScrollView(
+              padding: const EdgeInsets.all(8),
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 24,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(
+                              0, 3), // Adjust the position of the shadow
+                        ),
+                      ],
+                      color: const Color(
+                        0xFF6CD3FF,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "local",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const Text(
+                              "Stay",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 64,
+                                  child: const Text(
+                                    "Hotels & Lodges",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24),
+                                    color: Colors.white,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward,
+                                    size: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Image.asset("assets/images/dash1.png"),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 24,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(
+                              0, 3), // Adjust the position of the shadow
+                        ),
+                      ],
+                      color: const Color(
+                        0xFF6CD3FF,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "local",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const Text(
+                              "Stay",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 64,
+                                  child: const Text(
+                                    "Hotels & Lodges",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24),
+                                    color: Colors.white,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward,
+                                    size: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Image.asset("assets/images/dash1.png"),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 24,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(
+                              0, 3), // Adjust the position of the shadow
+                        ),
+                      ],
+                      color: const Color(
+                        0xFF6CD3FF,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "local",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const Text(
+                              "Stay",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 64,
+                                  child: const Text(
+                                    "Hotels & Lodges",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24),
+                                    color: Colors.white,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward,
+                                    size: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Image.asset("assets/images/dash1.png"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
-              height: 24,
+              height: 32,
             ),
             Container(
               child: Column(
@@ -363,6 +560,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     height: 16,
                   ),
                   SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [

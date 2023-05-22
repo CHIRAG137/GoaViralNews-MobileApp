@@ -15,6 +15,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  bool _noButtonClicked = false;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -57,6 +59,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
                       child: IntlPhoneField(
+                        flagsButtonMargin: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                        ),
                         decoration: const InputDecoration(
                           hintText: 'Mobile Number',
                           border: OutlineInputBorder(
@@ -76,6 +81,113 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     const SizedBox(
                       height: 24,
+                    ),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            const Text(
+                              "Do you have ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: GlobalVariables.extraFadedTextColor,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Icon(
+                              Icons.whatsapp_rounded,
+                              size: 16,
+                              color: Colors.lightGreenAccent.shade700,
+                            ),
+                            const Text(
+                              " Whatsapp?",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: GlobalVariables.extraFadedTextColor,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Row(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: _noButtonClicked
+                                    ? Colors.grey.shade200
+                                    : Colors.lightGreenAccent.shade200,
+                                elevation: 0,
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Yes",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: _noButtonClicked
+                                          ? Colors.grey
+                                          : Colors.white),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  _noButtonClicked = true;
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: _noButtonClicked
+                                    ? Colors.red
+                                    : Colors.grey.shade200,
+                                elevation: 0,
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "No",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: _noButtonClicked
+                                        ? Colors.white
+                                        : Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 16,
                     ),
                     const Text(
                       "You will receive an SMS verification that may apply message and data rates.",

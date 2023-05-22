@@ -49,12 +49,15 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 48,
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
                       child: IntlPhoneField(
+                        flagsButtonMargin: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                        ),
                         decoration: const InputDecoration(
                           hintText: 'Mobile Number',
                           border: OutlineInputBorder(
@@ -72,18 +75,18 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
-                    Text(
+                    const Text(
                       "Enter the Verification Code we just sent on your given number.",
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(
-                      height: 24,
+                    const SizedBox(
+                      height: 36,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -114,7 +117,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         );
                       }),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Container(
                       child: Column(
                         children: [
