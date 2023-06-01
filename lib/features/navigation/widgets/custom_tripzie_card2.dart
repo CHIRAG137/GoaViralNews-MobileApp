@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../size_config.dart';
 
 class CustomTripzie extends StatelessWidget {
   const CustomTripzie({
@@ -14,6 +15,9 @@ class CustomTripzie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
+    double height = SizeConfig.screenH!;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -31,11 +35,13 @@ class CustomTripzie extends StatelessWidget {
           Image.asset(
             imageData,
           ),
-          const SizedBox(
-            width: 16,
+          SizedBox(
+            width: width * 0.06,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 32),
+            padding: EdgeInsets.only(
+              right: width * 0.06,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,8 +52,8 @@ class CustomTripzie extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                const SizedBox(
-                  height: 4,
+                SizedBox(
+                  height: height * 0.005,
                 ),
                 Text(
                   subTitle,
@@ -56,8 +62,8 @@ class CustomTripzie extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: height * 0.015,
                 ),
                 Container(
                   width: 100,

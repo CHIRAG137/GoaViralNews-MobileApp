@@ -3,6 +3,7 @@ import 'package:goaviralnews/common/widgets/custom_elevatedbutton.dart';
 import 'package:goaviralnews/features/auth/screens/avatar.dart';
 import 'package:goaviralnews/features/onboarding/screens/onboarding.dart';
 import 'package:goaviralnews/globalVariables.dart';
+import 'package:goaviralnews/main.dart';
 import 'package:intl/intl.dart';
 import '../../../size_config.dart';
 
@@ -17,6 +18,21 @@ class CreateProfilePage extends StatefulWidget {
 
 class _CreateProfilePageState extends State<CreateProfilePage> {
   DateTime? _selectedDate;
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+
+  String selectedAvatar = "assets/icons/ic_avatar.png"; // Default avatar path
+  String name = "Your Name"; // Default name value
+  String emailAddress =
+      "enter your email address"; // Default email address value
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -26,206 +42,298 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
       backgroundColor: GlobalVariables.backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 36,
+          padding: EdgeInsets.symmetric(
+            horizontal: width * 0.05,
+            vertical: height * 0.03,
           ),
           child: Column(
             children: [
-              const Text(
-                "Bio-Data",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: GlobalVariables.primaryIconButtonBorderColor,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: IconButton(
-                      // ignore: prefer_const_constructors
-                      icon: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, OnboardingPage.routName);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              Stack(
-                children: [
-                  CircleAvatar(
-                    backgroundColor:
-                        GlobalVariables.primaryIconButtonBorderColor,
-                    radius: 40,
-                    child: Image.asset(
-                      "assets/icons/ic_avatar.png",
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    bottom: 6,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/avatar-page');
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          color: GlobalVariables.extraFadedTextColor,
-                        ),
-                        child: const Icon(
-                          Icons.edit,
-                          color: GlobalVariables.backgroundColor,
-                          size: 12,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
                 children: [
                   const Text(
-                    "Chirag Goel",
+                    "Bio-Data",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 20,
                     ),
                   ),
-                  const SizedBox(
-                    width: 16,
+                  SizedBox(
+                    height: height * 0.025,
                   ),
-                  Container(
-                    color: GlobalVariables.fadedTextColor,
-                    height: 18,
-                    width: 18,
-                    child: const Icon(
-                      Icons.edit,
-                      color: GlobalVariables.backgroundColor,
-                      size: 18,
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: GlobalVariables.primaryIconButtonBorderColor,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: IconButton(
+                          // ignore: prefer_const_constructors
+                          icon: Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, OnboardingPage.routName);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor:
+                            GlobalVariables.primaryIconButtonBorderColor,
+                        radius: 40,
+                        child: Image.asset(selectedAvatar),
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 6,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, AvatarPage.routName)
+                                .then((selectedImage) {
+                              if (selectedImage != null) {
+                                setState(() {
+                                  selectedAvatar = selectedImage as String;
+                                });
+                              }
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(24),
+                              color: GlobalVariables.extraFadedTextColor,
+                            ),
+                            child: const Icon(
+                              Icons.edit,
+                              color: GlobalVariables.backgroundColor,
+                              size: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: height * 0.025,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(
+                        width: width * 0.04,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              TextEditingController _nameController =
+                                  TextEditingController(text: name);
+
+                              return AlertDialog(
+                                title: Text('Edit Name'),
+                                content: TextField(
+                                  controller: _nameController,
+                                  decoration: InputDecoration(
+                                    hintText: 'Enter your name',
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text('Cancel'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  TextButton(
+                                    child: Text('Save'),
+                                    onPressed: () {
+                                      // Save the updated name and close the dialog
+                                      name = _nameController.text;
+                                      // Do something with the new name, e.g., update it in the database
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          color: GlobalVariables.fadedTextColor,
+                          height: 18,
+                          width: 18,
+                          child: Icon(
+                            Icons.edit,
+                            color: GlobalVariables.backgroundColor,
+                            size: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: height * 0.01,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        emailAddress,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: GlobalVariables.extraFadedTextColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: width * 0.04,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              TextEditingController _emailController =
+                                  TextEditingController(text: emailAddress);
+
+                              return AlertDialog(
+                                title: Text('Edit Email Address'),
+                                content: TextField(
+                                  controller: _emailController,
+                                  decoration: InputDecoration(
+                                    hintText: 'Enter your email address',
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text('Cancel'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  TextButton(
+                                    child: Text('Save'),
+                                    onPressed: () {
+                                      // Save the updated email address and close the dialog
+                                      emailAddress = _emailController.text;
+                                      // Do something with the new email address, e.g., update it in the database
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          color: GlobalVariables.extraFadedTextColor,
+                          height: 14,
+                          width: 14,
+                          child: Icon(
+                            Icons.edit,
+                            color: GlobalVariables.backgroundColor,
+                            size: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: height * 0.045,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: "What's your first name?",
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "chiraggoel@gmail.com",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      color: GlobalVariables.extraFadedTextColor,
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: "And your last name?",
                     ),
                   ),
-                  const SizedBox(
-                    width: 16,
+                  SizedBox(
+                    height: height * 0.03,
                   ),
-                  Container(
-                    color: GlobalVariables.extraFadedTextColor,
-                    height: 14,
-                    width: 14,
-                    child: const Icon(
-                      Icons.edit,
-                      color: GlobalVariables.backgroundColor,
-                      size: 14,
+                  DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      hintText: "Select gender",
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 36,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  hintText: "What's your first name?",
-                ),
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  hintText: "And your last name?",
-                ),
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  hintText: "Select gender",
-                ),
-                items: <String>['Male', 'Female', 'Other']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  // Do something with the selected value
-                },
-                value: null,
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              TextFormField(
-                readOnly: true,
-                decoration: InputDecoration(
-                  hintText: "What is your date of birth?",
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      showDatePicker(
-                        context: context,
-                        initialDate: _selectedDate ?? DateTime.now(),
-                        firstDate: DateTime(1900),
-                        lastDate: DateTime.now(),
-                      ).then((selectedDate) {
-                        if (selectedDate != null) {
-                          setState(() {
-                            _selectedDate = selectedDate;
-                          });
-                        }
-                      });
+                    items: <String>['Male', 'Female', 'Other']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      // Do something with the selected value
                     },
-                    icon: Icon(Icons.calendar_today),
+                    value: null,
                   ),
-                ),
-                controller: TextEditingController(
-                  text: _selectedDate != null
-                      ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
-                      : '',
-                ),
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
+                  TextFormField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      hintText: "What is your date of birth?",
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          showDatePicker(
+                            context: context,
+                            initialDate: _selectedDate ?? DateTime.now(),
+                            firstDate: DateTime(1900),
+                            lastDate: DateTime.now(),
+                          ).then((selectedDate) {
+                            if (selectedDate != null) {
+                              setState(() {
+                                _selectedDate = selectedDate;
+                              });
+                            }
+                          });
+                        },
+                        icon: Icon(Icons.calendar_today),
+                      ),
+                    ),
+                    controller: TextEditingController(
+                      text: _selectedDate != null
+                          ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
+                          : '',
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
-                height: height / 8,
+                height: height * 0.18,
               ),
-              const CustomElevatedButton(
+              CustomElevatedButton(
                 router: "/routes",
                 title: "Update Profile",
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    "/routes",
+                  );
+                },
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goaviralnews/features/auth/screens/avatar.dart';
 import 'package:goaviralnews/features/auth/screens/login.dart';
 import 'package:goaviralnews/features/auth/screens/otpverification.dart';
+import 'package:goaviralnews/features/auth/screens/otpverification_register.dart';
 import 'package:goaviralnews/features/auth/screens/profile.dart';
 import 'package:goaviralnews/features/auth/screens/register.dart';
 import 'package:goaviralnews/features/navigation/screens/dashboard.dart';
@@ -49,6 +50,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const AvatarPage(),
+      );
+      case OtpVerificationRegisterPage.routName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const OtpVerificationRegisterPage(),
       );
     default:
       return MaterialPageRoute(

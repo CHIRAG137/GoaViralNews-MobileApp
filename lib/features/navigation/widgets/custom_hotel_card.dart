@@ -24,7 +24,7 @@ class CustomHotelCard extends StatelessWidget {
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.all(width * 0.03),
       decoration: BoxDecoration(
         color: GlobalVariables.backgroundColor,
         borderRadius: BorderRadius.circular(10),
@@ -42,8 +42,8 @@ class CustomHotelCard extends StatelessWidget {
           Image.asset(
             imageData,
           ),
-          const SizedBox(
-            width: 16,
+          SizedBox(
+            width: width * 0.045,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +58,7 @@ class CustomHotelCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: width / 10,
+                    width: width * 0.12,
                   ),
                   Row(
                     children: [
@@ -81,8 +81,8 @@ class CustomHotelCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: height * 0.01,
               ),
               Row(
                 children: [
@@ -91,8 +91,8 @@ class CustomHotelCard extends StatelessWidget {
                     color: Colors.blue.shade700,
                     size: 18,
                   ),
-                  const SizedBox(
-                    width: 4,
+                  SizedBox(
+                    width: width * 0.01,
                   ),
                   Text(
                     location,
@@ -103,8 +103,8 @@ class CustomHotelCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: height * 0.01,
               ),
               Row(
                 children: [
@@ -113,8 +113,8 @@ class CustomHotelCard extends StatelessWidget {
                     color: GlobalVariables.extraFadedTextColor,
                     size: 18,
                   ),
-                  const SizedBox(
-                    width: 4,
+                  SizedBox(
+                    width: width * 0.01,
                   ),
                   Text(
                     views,

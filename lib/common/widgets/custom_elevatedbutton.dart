@@ -4,18 +4,17 @@ import '../../size_config.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton(
-      {super.key, required this.router, required this.title});
+      {super.key, required this.router, required this.title, this.onPressed});
   final String router;
   final String title;
+   final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
     return ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, router);
-      },
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: GlobalVariables.primaryButtonColor,
         elevation: 0,
@@ -24,14 +23,14 @@ class CustomElevatedButton extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: width / 3.8,
-          vertical: 16,
+          horizontal: width * 0.25,
+          vertical: height * 0.015,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      child: Container(
+      child: SizedBox(
         width: width / 3,
         child: Center(
           child: Text(title),

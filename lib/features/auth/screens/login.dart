@@ -24,9 +24,9 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: GlobalVariables.backgroundColor,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 24,
+          padding: EdgeInsets.symmetric(
+            horizontal: width * 0.05,
+            vertical: height * 0.03,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,8 +38,8 @@ class _LoginPageState extends State<LoginPage> {
                       title: "Login",
                       router: "/onboarding-page",
                     ),
-                    const SizedBox(
-                      height: 24,
+                    SizedBox(
+                      height: height * 0.025,
                     ),
                     const Align(
                       alignment: Alignment.topLeft,
@@ -52,13 +52,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     SizedBox(
-                      height: height / 12,
+                      height: height * 0.08,
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
                       child: IntlPhoneField(
-                        flagsButtonMargin: const EdgeInsets.symmetric(
-                          horizontal: 8,
+                        flagsButtonMargin: EdgeInsets.symmetric(
+                          horizontal: width * 0.02,
                         ),
                         decoration: const InputDecoration(
                           hintText: 'Mobile Number',
@@ -81,9 +81,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Container(
-                child: const CustomElevatedButton(
+                child: CustomElevatedButton(
                   title: "Verify Number",
                   router: "/otp-verification-page",
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/otp-verification-page",
+                    );
+                  },
                 ),
               ),
             ],

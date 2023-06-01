@@ -4,7 +4,7 @@ import 'package:goaviralnews/globalVariables.dart';
 import '../../../size_config.dart';
 
 class AvatarPage extends StatefulWidget {
-  const AvatarPage({super.key});
+  const AvatarPage({Key? key});
 
   static const String routName = "/avatar-page";
 
@@ -13,7 +13,8 @@ class AvatarPage extends StatefulWidget {
 }
 
 class _AvatarPageState extends State<AvatarPage> {
-  String selectedVariant = 'green';
+  late String selectedVariant;
+  late String initialAvatarPath;
 
   Map<String, List<String>> imageLists = {
     'green': [
@@ -61,6 +62,29 @@ class _AvatarPageState extends State<AvatarPage> {
   };
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Get the initial avatar path from the arguments passed by CreateProfilePage
+    initialAvatarPath =
+        ModalRoute.of(context)?.settings.arguments as String? ?? '';
+    selectedVariant = _getSelectedVariantFromAvatarPath(initialAvatarPath);
+  }
+
+  String _getSelectedVariantFromAvatarPath(String avatarPath) {
+    // Logic to extract the variant from the avatar path
+    // Assuming the path format is 'assets/icons/Group <number>.png'
+    if (avatarPath.contains('green')) {
+      return 'green';
+    } else if (avatarPath.contains('yellow')) {
+      return 'yellow';
+    } else if (avatarPath.contains('black')) {
+      return 'black';
+    } else {
+      return 'green'; // Default variant if path does not match any
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
@@ -69,9 +93,9 @@ class _AvatarPageState extends State<AvatarPage> {
       backgroundColor: GlobalVariables.backgroundColor,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 24,
+          padding: EdgeInsets.symmetric(
+            horizontal: width * 0.05,
+            vertical: height * 0.03,
           ),
           child: Column(
             children: [
@@ -79,35 +103,42 @@ class _AvatarPageState extends State<AvatarPage> {
                 title: "Select Avatar",
                 router: "/create-profile-page",
               ),
-              const SizedBox(
-                height: 24,
+              SizedBox(
+                height: height * 0.025,
               ),
-              GridView.count(
-                padding: const EdgeInsets.all(10),
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 32,
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                children: imageLists[selectedVariant]?.map((imagePath) {
-                      return Image.asset(
-                        imagePath,
-                      );
-                    }).toList() ??
-                    [],
+              Expanded(
+                child: GridView.count(
+                  padding: const EdgeInsets.all(10),
+                  crossAxisSpacing: width * 0.03,
+                  mainAxisSpacing: height * 0.025,
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  children: imageLists[selectedVariant]?.map((imagePath) {
+                        return GestureDetector(
+                          onTap: () {
+                            _selectAvatar(imagePath);
+                          },
+                          child: Image.asset(imagePath),
+                        );
+                      }).toList() ??
+                      [],
+                ),
               ),
-              const SizedBox(
-                height: 32,
+              SizedBox(
+                height: height * 0.035,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: EdgeInsets.symmetric(
+                  vertical: height * 0.015,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(48),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade400.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 8,
+                      spreadRadius: 0.5,
+                      blurRadius: 4,
                       offset: const Offset(
                           0, 3), // Adjust the position of the shadow
                     ),
@@ -140,8 +171,8 @@ class _AvatarPageState extends State<AvatarPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 16,
+                        SizedBox(
+                          width: width * 0.035,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -158,8 +189,8 @@ class _AvatarPageState extends State<AvatarPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 16,
+                        SizedBox(
+                          width: width * 0.035,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -186,5 +217,10 @@ class _AvatarPageState extends State<AvatarPage> {
         ),
       ),
     );
+  }
+
+  void _selectAvatar(String avatarPath) {
+    Navigator.pop(context,
+        avatarPath); // Return the selected avatar path to CreateProfilePage
   }
 }

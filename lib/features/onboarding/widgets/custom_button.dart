@@ -19,12 +19,12 @@ class CustomButton extends StatelessWidget {
         backgroundColor: GlobalVariables.primaryButtonColor,
         elevation: 0,
         textStyle: const TextStyle(
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: width / 14,
-          vertical: 12,
+          horizontal: width * 0.06,
+          vertical: height * 0.014,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),

@@ -5,16 +5,26 @@ import 'package:goaviralnews/globalVariables.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../../../size_config.dart';
 
-class OtpVerificationPage extends StatefulWidget {
-  const OtpVerificationPage({super.key});
+class OtpVerificationRegisterPage extends StatefulWidget {
+  const OtpVerificationRegisterPage({super.key});
 
-  static const String routName = "/otp-verification-page";
+  static const String routName = "/otp-verification-register-page";
 
   @override
-  State<OtpVerificationPage> createState() => _OtpVerificationPageState();
+  State<OtpVerificationRegisterPage> createState() =>
+      _OtpVerificationRegisterPageState();
 }
 
-class _OtpVerificationPageState extends State<OtpVerificationPage> {
+class _OtpVerificationRegisterPageState
+    extends State<OtpVerificationRegisterPage> {
+  String? phoneNumber;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Access the inherited widget and update the phoneNumber value
+    phoneNumber = ModalRoute.of(context)!.settings.arguments as String?;
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -35,14 +45,14 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 child: Column(
                   children: [
                     const CustomAppbar(
-                        router: "/onboarding-page", title: "Login"),
+                        router: "/onboarding-page", title: "Create Account"),
                     SizedBox(
                       height: height * 0.025,
                     ),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        "Please sign in to continue...",
+                        "An all-in-one platform that helps you plan the perfect Goa vacation in just a few clicks.",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -57,6 +67,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         horizontal: width * 0.02,
                       ),
                       child: IntlPhoneField(
+                        initialValue: phoneNumber,
                         flagsButtonMargin: const EdgeInsets.symmetric(
                           horizontal: 8,
                         ),
@@ -187,6 +198,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   Navigator.pushNamed(
                     context,
                     "/create-profile-page",
+                    arguments: phoneNumber,
                   );
                 },
               ),

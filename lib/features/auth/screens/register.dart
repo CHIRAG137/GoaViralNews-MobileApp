@@ -16,6 +16,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool _noButtonClicked = false;
+  String? phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +27,9 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: GlobalVariables.backgroundColor,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 24,
+          padding: EdgeInsets.symmetric(
+            horizontal: width * 0.05,
+            vertical: height * 0.03,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,8 +41,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       title: "Create Account",
                       router: "/onboarding-page",
                     ),
-                    const SizedBox(
-                      height: 24,
+                    SizedBox(
+                      height: height * 0.025,
                     ),
                     const Align(
                       alignment: Alignment.topLeft,
@@ -54,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     SizedBox(
-                      height: height / 12,
+                      height: height * 0.08,
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -73,16 +74,18 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         initialCountryCode: 'IN',
                         onChanged: (phone) {
+                          phoneNumber = phone.number;
                           print(phone.completeNumber);
                           print(phone.countryCode);
                           print(phone.number);
                         },
                       ),
                     ),
-                    const SizedBox(
-                      height: 24,
+                    SizedBox(
+                      height: height * 0.025,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
@@ -109,9 +112,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          width: 8,
-                        ),
                         Row(
                           children: [
                             ElevatedButton(
@@ -125,12 +125,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 8,
-                                ),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
+                                  ),
                                 ),
                               ),
                               child: Center(
@@ -143,9 +142,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                           : Colors.white),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 8,
                             ),
                             ElevatedButton(
                               onPressed: () {
@@ -162,12 +158,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 8,
-                                ),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                  ),
                                 ),
                               ),
                               child: Center(
@@ -186,8 +181,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 16,
+                    SizedBox(
+                      height: height * 0.015,
                     ),
                     const Text(
                       "You will receive an SMS verification that may apply message and data rates.",
@@ -201,9 +196,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               Container(
-                child: const CustomElevatedButton(
+                child: CustomElevatedButton(
                   title: "Verify Number",
-                  router: "/otp-verification-page",
+                  router: "/otp-verification-register-page",
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/otp-verification-register-page",
+                      arguments: phoneNumber,
+                    );
+                  },
                 ),
               ),
             ],

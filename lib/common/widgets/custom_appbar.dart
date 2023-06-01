@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goaviralnews/globalVariables.dart';
+import '../../size_config.dart';
 
 class CustomAppbar extends StatelessWidget {
   const CustomAppbar({super.key, required this.router, required this.title});
@@ -7,6 +8,8 @@ class CustomAppbar extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
     return Row(
       children: [
         Container(
@@ -29,7 +32,7 @@ class CustomAppbar extends StatelessWidget {
         ),
         // ignore: prefer_const_constructors
         SizedBox(
-          width: 16,
+          width: width * 0.05,
         ),
         Text(
           title,

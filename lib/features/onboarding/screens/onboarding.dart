@@ -33,8 +33,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset("assets/images/logo.png"),
-                    const SizedBox(
-                      height: 16,
+                    SizedBox(
+                      height: height * 0.035,
                     ),
                     const Text(
                       "Welcome",
@@ -43,8 +43,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
-                      height: 16,
+                    SizedBox(
+                      height: height * 0.025,
                     ),
                     const Text(
                       "Log in with your details to continue",
@@ -53,8 +53,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    const SizedBox(
-                      height: 32,
+                    SizedBox(
+                      height: height * 0.025,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

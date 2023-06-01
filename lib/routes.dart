@@ -1,63 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:goaviralnews/features/navigation/screens/dashboard.dart';
-import 'package:goaviralnews/features/navigation/screens/search.dart';
 import 'package:goaviralnews/features/navigation/screens/photo_gallery.dart';
+import 'package:goaviralnews/features/navigation/screens/search.dart';
 import 'package:goaviralnews/features/navigation/screens/tripzie.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class Routes extends StatefulWidget {
-  const Routes({super.key});
-
+  const Routes({Key? key}) : super(key: key);
   static const String routName = "/routes";
 
   @override
-  State<Routes> createState() => _RoutesState();
+  _RoutesState createState() => _RoutesState();
 }
 
-class _RoutesState extends State<Routes> {
-  var _currentIndex = 0;
-  final List<Widget> _pages = [
+class _RoutesState extends State {
+  int _selectedTab = 0;
+
+  List _pages = [
     DashboardPage(),
     SearchPage(),
     PhotoGalleryScreen(),
     TripSectionPage(),
   ];
 
+  _changeTab(int index) {
+    setState(() {
+      _selectedTab = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex],
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: _currentIndex,
-        onTap: (i) => setState(() => _currentIndex = i),
+      body: _pages[_selectedTab],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedTab,
+        onTap: (index) => _changeTab(index),
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
         items: [
-          /// Home
-          SalomonBottomBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
-            selectedColor: Colors.purple,
-          ),
-
-          /// Search
-          SalomonBottomBarItem(
-            icon: Icon(Icons.search),
-            title: Text("Search"),
-            selectedColor: Colors.orange,
-          ),
-
-          /// Likes
-          SalomonBottomBarItem(
-            icon: Icon(Icons.task_outlined),
-            title: Text("Gallery"),
-            selectedColor: Colors.pink,
-          ),
-
-          /// Profile
-          SalomonBottomBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Plan"),
-            selectedColor: Colors.teal,
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: "Gallery"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Plan"),
         ],
       ),
     );
