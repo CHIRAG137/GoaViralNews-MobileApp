@@ -21,10 +21,11 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
 
-  String selectedAvatar = "assets/icons/ic_avatar.png"; // Default avatar path
+  String selectedAvatar = "assets/icons/Group 42.png"; // Default avatar path
   String name = "Your Name"; // Default name value
   String emailAddress =
       "enter your email address"; // Default email address value
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -83,28 +84,28 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
                       ),
                     ],
                   ),
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor:
-                            GlobalVariables.primaryIconButtonBorderColor,
-                        radius: 40,
-                        child: Image.asset(selectedAvatar),
-                      ),
-                      Positioned(
-                        right: 0,
-                        bottom: 6,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, AvatarPage.routName)
-                                .then((selectedImage) {
-                              if (selectedImage != null) {
-                                setState(() {
-                                  selectedAvatar = selectedImage as String;
-                                });
-                              }
-                            });
-                          },
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, AvatarPage.routName)
+                          .then((selectedImage) {
+                        if (selectedImage != null) {
+                          setState(() {
+                            selectedAvatar = selectedImage as String;
+                          });
+                        }
+                      });
+                    },
+                    child: Stack(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor:
+                              GlobalVariables.primaryIconButtonBorderColor,
+                          radius: 40,
+                          child: Image.asset(selectedAvatar),
+                        ),
+                        Positioned(
+                          right: 0,
+                          bottom: 6,
                           child: Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
@@ -118,8 +119,8 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: height * 0.025,
@@ -257,67 +258,104 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
                   SizedBox(
                     height: height * 0.045,
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: "What's your first name?",
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: "And your last name?",
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-                  DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      hintText: "Select gender",
-                    ),
-                    items: <String>['Male', 'Female', 'Other']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      // Do something with the selected value
-                    },
-                    value: null,
-                  ),
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-                  TextFormField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      hintText: "What is your date of birth?",
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          showDatePicker(
-                            context: context,
-                            initialDate: _selectedDate ?? DateTime.now(),
-                            firstDate: DateTime(1900),
-                            lastDate: DateTime.now(),
-                          ).then((selectedDate) {
-                            if (selectedDate != null) {
-                              setState(() {
-                                _selectedDate = selectedDate;
-                              });
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          decoration: InputDecoration(
+                            hintText: "What's your first name?",
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your first name';
                             }
-                          });
-                        },
-                        icon: Icon(Icons.calendar_today),
-                      ),
-                    ),
-                    controller: TextEditingController(
-                      text: _selectedDate != null
-                          ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
-                          : '',
+                            return null;
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              name = value;
+                            });
+                          },
+                        ),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: "And your last name?",
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your last name';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        DropdownButtonFormField<String>(
+                          decoration: const InputDecoration(
+                            hintText: "Select gender",
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please select your gender';
+                            }
+                            return null;
+                          },
+                          items: <String>['Male', 'Female', 'Other']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            // Do something with the selected value
+                          },
+                          value: null,
+                        ),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        TextFormField(
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            hintText: "What is your date of birth?",
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                showDatePicker(
+                                  context: context,
+                                  initialDate: _selectedDate ?? DateTime.now(),
+                                  firstDate: DateTime(1900),
+                                  lastDate: DateTime.now(),
+                                ).then((selectedDate) {
+                                  if (selectedDate != null) {
+                                    setState(() {
+                                      _selectedDate = selectedDate;
+                                    });
+                                  }
+                                });
+                              },
+                              icon: Icon(Icons.calendar_today),
+                            ),
+                          ),
+                          controller: TextEditingController(
+                            text: _selectedDate != null
+                                ? DateFormat('dd-MM-yyyy')
+                                    .format(_selectedDate!)
+                                : '',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your date of birth';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -329,10 +367,13 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
                 router: "/routes",
                 title: "Update Profile",
                 onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    "/routes",
-                  );
+                  if (_formKey.currentState!.validate()) {
+                    // All fields are valid, proceed to the next screen
+                    Navigator.pushNamed(
+                      context,
+                      "/routes",
+                    );
+                  }
                 },
               ),
             ],

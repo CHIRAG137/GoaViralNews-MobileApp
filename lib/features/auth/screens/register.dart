@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: _noButtonClicked
                                     ? Colors.grey.shade200
-                                    : Colors.lightGreenAccent.shade200,
+                                    : Colors.lightGreenAccent.shade700,
                                 elevation: 0,
                                 textStyle: const TextStyle(
                                   fontSize: 16,

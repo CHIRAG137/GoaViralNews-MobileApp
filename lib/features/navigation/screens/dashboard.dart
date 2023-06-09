@@ -18,6 +18,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  String selectedAvatar = "assets/icons/Group 42.png"; // Default avatar path
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -46,7 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                     child: IconButton(
                       // ignore: prefer_const_constructors
-                      icon: Image.asset("assets/icons/ic_avatar.png"),
+                      icon: Image.asset(selectedAvatar),
                       onPressed: () {},
                     ),
                   ),
@@ -397,7 +398,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                         ],
                         color: const Color(
-                          0xFF6CD3FF,
+                          0xFFD56B51,
                         ),
                       ),
                       child: Row(
@@ -406,7 +407,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                "local",
+                                "Delicious",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
@@ -414,7 +415,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ),
                               ),
                               const Text(
-                                "Stay",
+                                "Food",
                                 style: TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.w900,
@@ -427,9 +428,9 @@ class _DashboardPageState extends State<DashboardPage> {
                               Row(
                                 children: [
                                   Container(
-                                    width: 64,
+                                    width: 96,
                                     child: const Text(
-                                      "Hotels & Lodges",
+                                      "Restaurants & Cafes",
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -457,91 +458,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           SizedBox(
                             width: width * 0.035,
                           ),
-                          Image.asset("assets/images/dash1.png"),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: width * 0.05,
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: width * 0.05,
-                        vertical: height * 0.025,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(
-                                0, 3), // Adjust the position of the shadow
-                          ),
-                        ],
-                        color: const Color(
-                          0xFF6CD3FF,
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "local",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const Text(
-                                "Stay",
-                                style: TextStyle(
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(
-                                height: height * 0.015,
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    width: 64,
-                                    child: const Text(
-                                      "Hotels & Lodges",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.015,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(24),
-                                      color: Colors.white,
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_forward,
-                                      size: 16,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: width * 0.035,
-                          ),
-                          Image.asset("assets/images/dash1.png"),
+                          Image.asset("assets/images/dash2.png"),
                         ],
                       ),
                     ),

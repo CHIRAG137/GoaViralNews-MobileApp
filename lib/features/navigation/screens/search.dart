@@ -18,6 +18,9 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+
+  String selectedAvatar = "assets/icons/Group 42.png"; // Default avatar path
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -46,7 +49,7 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     child: IconButton(
                       // ignore: prefer_const_constructors
-                      icon: Image.asset("assets/icons/ic_avatar.png"),
+                      icon: Image.asset(selectedAvatar),
                       onPressed: () {},
                     ),
                   ),

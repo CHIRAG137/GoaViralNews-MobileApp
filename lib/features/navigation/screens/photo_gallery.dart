@@ -17,6 +17,10 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
     'assets/images/im_gallery1.png',
     'assets/images/im_gallery1.png',
   ];
+
+  String selectedAvatar = "assets/icons/Group 42.png"; // Default avatar path
+
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -45,7 +49,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: IconButton(
-                      icon: Image.asset("assets/icons/ic_avatar.png"),
+                      icon: Image.asset(selectedAvatar),
                       onPressed: () {},
                     ),
                   ),
