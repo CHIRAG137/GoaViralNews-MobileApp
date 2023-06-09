@@ -6,6 +6,7 @@ import 'package:goaviralnews/features/auth/screens/otpverification_register.dart
 import 'package:goaviralnews/features/auth/screens/profile.dart';
 import 'package:goaviralnews/features/auth/screens/register.dart';
 import 'package:goaviralnews/features/navigation/screens/dashboard.dart';
+import 'package:goaviralnews/features/navigation/screens/slider.dart';
 import 'package:goaviralnews/features/onboarding/screens/onboarding.dart';
 import 'package:goaviralnews/routes.dart';
 
@@ -55,6 +56,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const OtpVerificationRegisterPage(),
+      );
+       case SliderPage.routName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const SliderPage(),
       );
     default:
       return MaterialPageRoute(

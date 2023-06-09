@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goaviralnews/features/navigation/widgets/add_story_avatar.dart';
 import 'package:goaviralnews/features/navigation/widgets/black_avatar.dart';
-import 'package:goaviralnews/features/navigation/widgets/custom_card.dart';
 import 'package:goaviralnews/features/navigation/widgets/dotted_green_avatar.dart';
 import 'package:goaviralnews/features/navigation/widgets/purple_avatar.dart';
 import 'package:goaviralnews/globalVariables.dart';
@@ -46,9 +45,13 @@ class _DashboardPageState extends State<DashboardPage> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: IconButton(
-                      // ignore: prefer_const_constructors
                       icon: Image.asset(selectedAvatar),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          "/slider-page",
+                        );
+                      },
                     ),
                   ),
                   // ignore: prefer_const_constructors
